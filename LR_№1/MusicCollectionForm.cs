@@ -18,7 +18,7 @@ namespace LR__1
         public MusicCollectionForm()
         {
             this.Text = "Управление музыкальной коллекцией";
-            this.Width = 500;
+            this.Width = 600;
             this.Height = 400;
             CreateControls();
             musicCollection = new MusicCollection(listView);
@@ -87,7 +87,7 @@ namespace LR__1
             {
                 Location = new System.Drawing.Point(230, 320),
                 Text = "Поиск по исполнителю",
-                Size = new System.Drawing.Size(120, 25)
+                Size = new System.Drawing.Size(200, 25)
             };
             searchByArtistButton.Click += (sender, e) =>
             {
@@ -100,7 +100,7 @@ namespace LR__1
             };
             sortByYearButton = new Button
             {
-                Location = new System.Drawing.Point(360, 320),
+                Location = new System.Drawing.Point(440, 320),
                 Text = "Сортировать по году",
                 Size = new System.Drawing.Size(120, 25)
             };
