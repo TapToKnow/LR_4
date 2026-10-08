@@ -17,6 +17,7 @@ namespace LR__1
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MusicCollectionForm());
+
         }
     }
 }
