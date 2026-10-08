@@ -48,12 +48,19 @@ namespace LR__1
                 addTrackForm.ShowDialog();
                 if (addTrackForm.DialogResult == DialogResult.OK)
                 {
-                    var track = new MusicTrack(
-                    addTrackForm.Artist,
-                    addTrackForm.Title,
-                    addTrackForm.Genre,
-                    addTrackForm.Year);
-                    musicCollection.AddTrack(track);
+                    try
+                    {
+                        var track = new MusicTrack(
+                            addTrackForm.Artist,
+                            addTrackForm.Title,
+                            addTrackForm.Genre,
+                            addTrackForm.Year);
+                        musicCollection.AddTrack(track);
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка ввода");
+                    }
                 }
             };
             removeTrackButton = new Button
@@ -73,7 +80,7 @@ namespace LR__1
                 listView.SelectedItems[0].SubItems[0].Text,
                 listView.SelectedItems[0].SubItems[1].Text,
                 listView.SelectedItems[0].SubItems[2].Text,
-                int.Parse(listView.SelectedItems[0].SubItems[3].Text));
+                listView.SelectedItems[0].SubItems[3].Text);
                 musicCollection.RemoveTrack(track);
             };
             searchByArtistButton = new Button
