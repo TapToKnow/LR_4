@@ -18,7 +18,7 @@ namespace LR__1
         public MusicCollectionForm()
         {
             this.Text = "Управление музыкальной коллекцией";
-            this.Width = 500;
+            this.Width = 600;
             this.Height = 400;
             CreateControls();
             musicCollection = new MusicCollection(listView);
@@ -48,12 +48,19 @@ namespace LR__1
                 addTrackForm.ShowDialog();
                 if (addTrackForm.DialogResult == DialogResult.OK)
                 {
-                    var track = new MusicTrack(
-                    addTrackForm.Artist,
-                    addTrackForm.Title,
-                    addTrackForm.Genre,
-                    addTrackForm.Year);
-                    musicCollection.AddTrack(track);
+                    try
+                    {
+                        var track = new MusicTrack(
+                            addTrackForm.Artist,
+                            addTrackForm.Title,
+                            addTrackForm.Genre,
+                            addTrackForm.Year);
+                        musicCollection.AddTrack(track);
+                    }
+                    catch (ArgumentException ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка ввода");
+                    }
                 }
             };
             removeTrackButton = new Button
@@ -73,14 +80,14 @@ namespace LR__1
                 listView.SelectedItems[0].SubItems[0].Text,
                 listView.SelectedItems[0].SubItems[1].Text,
                 listView.SelectedItems[0].SubItems[2].Text,
-                int.Parse(listView.SelectedItems[0].SubItems[3].Text));
+                listView.SelectedItems[0].SubItems[3].Text);
                 musicCollection.RemoveTrack(track);
             };
             searchByArtistButton = new Button
             {
                 Location = new System.Drawing.Point(230, 320),
                 Text = "Поиск по исполнителю",
-                Size = new System.Drawing.Size(120, 25)
+                Size = new System.Drawing.Size(200, 25)
             };
             searchByArtistButton.Click += (sender, e) =>
             {
@@ -93,7 +100,7 @@ namespace LR__1
             };
             sortByYearButton = new Button
             {
-                Location = new System.Drawing.Point(360, 320),
+                Location = new System.Drawing.Point(440, 320),
                 Text = "Сортировать по году",
                 Size = new System.Drawing.Size(120, 25)
             };

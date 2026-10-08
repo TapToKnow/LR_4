@@ -14,7 +14,7 @@ namespace LR__1
         {
             this.Text = "Поиск по исполнителю";
             this.Width = 300;
-            this.Height = 100;
+            this.Height = 150;
             var artistLabel = new Label
             {
                 Text = "Исполнитель:",
@@ -23,7 +23,7 @@ namespace LR__1
             };
             var artistTextBox = new TextBox
             {
-                Location = new System.Drawing.Point(10, 30),
+                Location = new System.Drawing.Point(10, 35),
                 Width
             = 260
             };
