@@ -12,7 +12,7 @@ namespace LR__1
         public string Artist { get; set; }
         public string Title { get; set; }
         public string Genre { get; set; }
-        public int Year { get; set; }
+        public string Year { get; set; } // Из int в string
         public AddTrackForm()
         {
             this.Text = "Добавить трек";
@@ -84,7 +84,7 @@ namespace LR__1
                     Artist = artistTextBox.Text;
                     Title = titleTextBox.Text;
                     Genre = genreTextBox.Text;
-                    Year = year;
+                    Year = yearTextBox.Text;
                     DialogResult = DialogResult.OK;
                     Close();
                 }
